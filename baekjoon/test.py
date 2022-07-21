@@ -1,10 +1,12 @@
-a = list(str(input()))
-if '0' not in a:
-    print(-1)
-else:
-    suma = sum(map(int,a))
-    if suma % 3 == 0:
-        a.sort(reverse=True)
-        print(''.join(a))
-    else:
-        print(-1)
+numbers = [1,1,3,12,123,23,12,12,12,3,0,1,1]
+
+save_end = '_'
+i = 0
+while i < len(numbers):
+    if save_end == numbers[i]:
+        numbers.pop(i)
+    else: 
+        save_end = numbers[i]
+        i += 1
+
+print(numbers)
