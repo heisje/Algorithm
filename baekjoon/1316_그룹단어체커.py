@@ -2,13 +2,6 @@
 #연속하지 않는 alpabet를 찾는 것이 핵심
 #시간 68 ms 30840 kb
 
-#ex. 
-#입력:3
-#happy
-#new
-#aba
-#출력:2
-
 #1. 입력받기
 N = int(input()) #N은 반복의 개수
 count = 0 #결과를 담을 count
@@ -17,6 +10,7 @@ case_li = [None for _ in range(N)]#입력 받을 문자열 리스트
 for i in range(N):
     case_li[i] = list(input())
 #print(case_li)
+
 
 #2. 검증하기
 #case를 하나씩 빼면서,

@@ -1,17 +1,32 @@
-li = []
-for _ in range(5):
-    inputation = input('소금물의 농도(%)와 소금물의 양(g)을 입력하십시오: ')
-    if inputation == 'Done':
-        break
-    else:
-        per, g = inputation.split()
-        li += [int(per.rstrip('%')), int(g.rstrip('g'))],
-print(li)
-#소금의 양 구하기
-salt = 0.0
-water = 0.0
-for i in li:
-    salt += i[0] * 0.01 * i[1]
-    water += i[1]
-print(f'{round((salt/water),10)*100}% {round(water)}g')
+from os import remove
 
+
+class Dog():
+    num_of_dogs = 0
+    birth_of_dogs = 0
+    
+    def __init__(self,name,type):
+        self.name = name
+        self.type = type
+        Dog.num_of_dogs += 1
+        Dog.birth_of_dogs += 1
+
+    def __del__(self):
+        Dog.num_of_dogs -= 1
+
+    def bark(self):
+        print('barkbark')
+
+    @classmethod
+    def get_status(slr):
+        print(f'{slr.num_of_dogs}')
+        print(f'{slr.birth_of_dogs}')
+
+dog1 = Dog('1','n1')
+dog2 = Dog('2','n2')
+dog3 = Dog('3','n3')
+dog4 = Dog('4','n4')
+dog5 = Dog('5','n5')
+dog4.bark()
+del dog5
+Dog.get_status()
