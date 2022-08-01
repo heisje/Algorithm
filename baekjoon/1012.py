@@ -59,12 +59,7 @@ for aa in range(a):
                         bat[i + max_x] = low
             if sub != bat[i]:
                 roop = True
-    '''
-    for i in range(len(bat)):
-        print(bat[i], end="")
-        if i % max_x == max_x - 1:
-            print()
-    '''
+
     return_tuple += (len(set(bat)-{0}),)
     #print(return_tuple)
 

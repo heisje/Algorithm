@@ -52,12 +52,6 @@ while deq:
         count = count + 1
     time += 1
     
-    '''
-    for y in range(0, n):
-        for x in range(0, m):
-            print(str(box[y][x])+' ',end='')
-        print()
-    '''
 if any(0 in l for l in box):
     print(-1)
 else:print(count)

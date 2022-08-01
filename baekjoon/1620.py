@@ -20,12 +20,6 @@ for b in range(question_num): #질문 num만큼 리스트에 저장
         answ_li[b] = case_li[int(ques_li[b])-1]
     elif check >= 65: #문자 질문
         answ_li[b] = dic[ques_li[b]]
-    '''
-    try:
-        answ_li[b] = case_li[int(ques_li[b])-1]
-    except:
-        answ_li[b] = dic[ques_li[b]]
-    '''
 
 for d in answ_li: #답리스트 표현
     print(d)

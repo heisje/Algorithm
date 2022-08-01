@@ -41,17 +41,7 @@ while roop:
             roop = False
             break
     
-    #print('go_len:'+str(go_len))
     count += 1
-    #print('count:'+str(count))
-    
-    #print(count)
-    #print(go)
-    # for y in range(M):
-    #    for x in range(N):
-    #        print(miro[y][x], end =' ')
-    #    print()
-    
 
 print(count)
         

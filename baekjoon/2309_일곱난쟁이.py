@@ -29,32 +29,3 @@ for i in range(9):
 for hei in height:
     if hei != height[save_i] and hei != height[save_j]:
         print(hei)
-
-'''
-def forfor(height, check_list, count, answer, n):
-    if n == 0 :
-        return 
-    for i in range(n):
-        if check_list[i] == False:
-            if count == 100:
-                for ans in answer:
-                    print(ans)
-                    return
-            check_list[i] = True
-            count += height[i]
-            answer.append(height[i])
-            forfor(height, check_list, count, answer, n - 1)
-            answer.pop
-            check_list[i] = False
-            count -= height[i]
-    return
-
-height = [None]*9
-for i in range(9):
-    height[i] = int(input())
-
-height.sort()
-check_list = [False for _ in range(len(height))] 
-count = 0
-forfor(height, check_list, count, [], 9)
-'''
