@@ -15,7 +15,7 @@ def sosu(a):
     return True
 
 list_num = list(map(sosu,list_num))
-print(list_num)
+#print(list_num)
 for i, value in enumerate(list_num, min):
     if value == True:
         print(i)
