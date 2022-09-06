@@ -1,34 +1,22 @@
 from math import sqrt
-
-def dfs(n, N, count):
-    global mini
-    if count >= 4:
-        return
-    if n == 0:
-        if count < mini:
-            mini = count
-        print(count)
-        return 
-    for i in range(int(sqrt(n)),0,-1):
-        count += 1
-        n=n-int(sqrt(i))**2
-        dfs(n, N, count)
-        count -= 1
-    pass
-
 N = int(input())
-result = [] 
-mini = 5
-dfs(N, N, 0)
-print(mini)
 
-'''
-for n in range(int(math.sqrt(N)), 0, -1):
-    count = 0 
-    while N > 0 or count > 4:
-        print(int(math.sqrt(N)), N-int(math.sqrt(N))**2)
-        N=N-int(math.sqrt(N))**2
-        count += 1
-        if N == 0:
-            break
-'''
+if sqrt(N) % 1 == 0:
+    print(1)
+else:
+    plus = 0
+    for i in range(int(sqrt(N))+1): 
+        for j in range(int(sqrt(N))+1): 
+            for k in range(int(sqrt(N))+1): 
+                # i=0, j=0, k=정수인 경우 plus가 0이여서 총 합이 1부터 다 찾고
+                # i=0, j=정수, k=정수인 경우 plus가 1이여서 총 합이 2를 다 찾고 ...
+                find = i**2 + j**2 + k**2
+                if find == N: 
+                    print(1+plus)     
+                    exit()
+                if find > N:
+                    break
+            if plus == 0:
+                plus = 1
+        plus = 2 
+    print(4)
