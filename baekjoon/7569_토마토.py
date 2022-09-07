@@ -20,7 +20,7 @@ for h in range(H):
         for m in range(M):
             if arr[h][n][m] == 1: #숫자가 맞으면
                 qu.append((h, n, m))
-            if arr[h][n][m] != 0: #총 숫자의 갯수가 안맞으면 -1 되게도 해봤다.
+            if arr[h][n][m] != 0: #총 숫자의 갯수세기 -1, 1 경우
                 all -= 1
 
 mx = 1
@@ -30,12 +30,14 @@ while qu:
         if 0 <= m + vM[i] < M and 0 <= n + vN[i] < N and 0 <= h + vH[i] < H: #방향측정
             if arr[h + vH[i]][n + vN[i]][m + vM[i]] == 0: #visited 안갔냐
                 arr[h + vH[i]][n + vN[i]][m + vM[i]] = arr[h][n][m] + 1 #visited 갔다
-                all -= 1 #총 숫자의 갯수가 안맞으면 -1 되게도 해봤다.
+                all -= 1 #총 숫자의 갯수세기 0일 경우
                 if mx < arr[h][n][m] + 1: #최대값
                     mx = arr[h][n][m] + 1
-                qu.append((h + vH[i],  n + vN[i], m + vM[i]))
+                qu.append((h + vH[i],  n + vN[i], m + vM[i])) # queue에 넣기
 
 if all == 0:  #총 숫자의 갯수가 맞으면
     print(mx-1)
 else:   #총 숫자의 갯수가 안맞으면
     print(-1)
+
+#골드5 / 1시간
