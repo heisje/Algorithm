@@ -1,29 +1,24 @@
 import sys
 input = lambda:sys.stdin.readline().strip()
 
-def dfs(n, count):
-    if n >= END:
-        result.append(count)
-        return
-    for a in range(len(arr)):
-        if visited[a] == 0 and n <= arr[a][0]:
-            visited[a] = 1
-            dfs(arr[a][1], count + 1)
-            visited[a] = 0
-    else:
-        result.append(count)
-        return
-
-
 N = int(input())
-arr = []
+arr = [[]for _ in range(N)]
+
+# 시작이랑 끝점을 튜플로 저장
 for n in range(N):
-    s, e = map(int, input().split())
-    arr.append([s, e])
+    s, e = map(int, input().split()) 
+    arr[n] = (s, e)
 arr.sort()
-visited = [0]*N
-END = max(arr,key=lambda a:a[1])[1]
-result = []
-dfs(0, 0)
-print(max(result))
-#수열을 만들어보고 싶은데, dfs 거리로 하는 게 쉽겠다.
+
+ed = 0    # end 앞의 회의가 끝난지점
+count = 0 # 개수세기
+for a in arr:
+    if a[0] >= ed: # 시작점이 end(앞의 회의가 끝난시점)보다 크면
+        ed = a[1]  # 회의를 넣고
+        count += 1 # 회의 개수를 늘린다.
+    elif a[1] <= ed: # 시작점이 end(앞의 회의가 끝난시점)보다 작은 대신, 끝이 빠르면 교체해서 넣기
+        ed = a[1]
+print(count) #개수 세기
+
+#실버 1 / 284ms or 4280ms / 50분
+
