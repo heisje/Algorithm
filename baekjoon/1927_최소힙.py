@@ -12,3 +12,5 @@ for _ in range(N):
             print(0)
     else:
         heapq.heappush(a, value)
+
+#실버2 / 10분 / 152ms
