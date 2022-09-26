@@ -13,4 +13,4 @@ for _ in range(N):
     else:
         heapq.heappush(a, -value)
 
-#실버2 / 3분
+#실버2 / 3분 / 156ms
