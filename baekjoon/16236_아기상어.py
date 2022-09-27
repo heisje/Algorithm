@@ -16,7 +16,7 @@ for y in range(N):
 target = []
 while True:
     
-    # 크기재서 먹을 수 있으면, 거리를 재기 추가
+    # 크기재서 먹을 수 있으면, 거리를 재서 추가
     for fish in fishes:
         if shark[2] > fish[2]:
             target.append(fish)
