@@ -27,10 +27,10 @@ N, M = map(int, input().split())
 arr = []
 for _ in range(N):
     arr.append(list(map(int, input().split())))
-new_arr = [[[0,0,0,0]] * M for _ in range(N)]
+new_arr = [[[0,0,0,0] for _ in range(M)] for _ in range(N)]
 result = []
 
-print(arr)
+
 
 for y in range(N):
     for x in range(M):
@@ -40,7 +40,7 @@ for y in range(N):
             if 0 <= go_x < M and 0 <= go_y < N:
                 new_arr[y][x][idx] = arr[y][x] + arr[go_y][go_x]
 
-print(new_arr)
+
 
 for y in range(N): # x y 다 계산
     for x in range(M):
@@ -50,9 +50,10 @@ for y in range(N): # x y 다 계산
             go_y = y + delta[idx][0]
             if 0 <= go_x < M and 0 <= go_y < N:
                 for jdx in range(4): #네방향의 위아래 # 오른쪽, 아래, 왼쪽, 위
-                    if (jdx + 2) % 2 != idx:
+                    if (jdx + 2) % 4 != idx:
                         temp.append(new_arr[go_y][go_x][jdx])
             if temp:
+                #print(x, y, temp, new_arr[y][x][idx])
                 result.append(max(temp) + new_arr[y][x][idx])
 
 
