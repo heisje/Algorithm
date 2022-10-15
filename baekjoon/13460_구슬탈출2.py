@@ -47,13 +47,11 @@ while dq:
     before_blu = blu[:]  # 이전꺼 저장해두기, 마지막에 바꾸려고
     before_red = red[:]
     print('bf:',blu, red, count)
-    # 4방향으로 움직인다
+    # 4방향으로 움직인다 
+
     for didx, dx, dy in d:
         #if (didx + 2) % 4 != b_didx:
             # 블루랑 레드를 한 방향으로 계속 움직여준다, 벽이나 공을 만날 때 까지
-            if dx == hol[0] and dy == hol[1]:
-                exit() 
-
             roop_blu = roop_red = True # 둘 다 행동을 그만두면 멈춰!!
             front_blu = front_red = False # 내 앞에 공있다
             while roop_blu or roop_red:
