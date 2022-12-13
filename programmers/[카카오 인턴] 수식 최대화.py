@@ -1,5 +1,7 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/67257
 from itertools import permutations
+import re
+
 
 def solution(expression):
     answer = 0
@@ -8,17 +10,21 @@ def solution(expression):
     list_ex = []
     temp = ""
 
-    # 연산자랑 숫자랑 나눠서 리스트를 생성하는 과정
-    for i in expression:
-        if i.isdigit():
-            temp += i
-        else:
-            list_ex.append(temp)
-            temp = ""
-            used.add(i)
-            list_ex.append(i)
-    list_ex.append(temp)
+    # 이렇게 할 수도 있다.
+    used = [x for x in ['*','+','-'] if x in expression]
+    list_ex = re.split(r'(\D)',expression)
     
+    # 연산자랑 숫자랑 나눠서 리스트를 생성하는 과정
+    # for i in expression:
+    #     if i.isdigit():
+    #         temp += i
+    #     else:
+    #         list_ex.append(temp)
+    #         temp = ""
+    #         used.add(i)
+    #         list_ex.append(i)
+    # list_ex.append(temp)
+    # print(list_ex)
     
     # 결과값 저장
     max_result = 0
