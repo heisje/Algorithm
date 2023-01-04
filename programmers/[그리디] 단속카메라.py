@@ -20,6 +20,6 @@ def solution(routes):
     
     print(group)
 
-    return answer
+    return len(group)
 
 print(solution([[-20,-15], [-14,-5], [-18,-13], [-5,-3]]))
