@@ -1,25 +1,22 @@
-import sys
+# 1152ms
 import heapq
-INF = sys.maxsize
+
 # 결과값으로 최단시간 반환
-def sToE(S, N, E, node):
+def sToE(start, end):
     hq = []
-    visited = [INF for _ in range(N+1)]
-    for goTime, goStart in node[S]:
-        heapq.heappush(hq, (goTime, goStart))
+    visited = [float('inf') for _ in range(N+1)]
+    visited[start] = 0
+    heapq.heappush(hq, (0, start))
 
     while hq:
         time, start = heapq.heappop(hq)
-        if visited[start] < time :
-            continue
-        if start == E:
+        if start == end:
             return time
-        for goTime, goStart in node[start]:
-            if time + goTime < visited[goStart]:
-                visited[start] = time + goTime
-                heapq.heappush(hq, (goTime+time, goStart))
-    return 0
-    
+        for goTime, next in node[start]:
+            cost = goTime + time
+            if cost < visited[next]:
+                visited[next] = cost
+                heapq.heappush(hq, (cost, next))
 
 # N은 학생 수
 # X는 마을 번호
@@ -33,7 +30,7 @@ for _ in range(M):
 
 # 집에서 x로 가는 거리 + x에서 집으로 가는 최단 거리의 합
 answer = []
-for n in range(N):
+for n in range(1, N+1):
     if n != X:
-        answer.append(sToE(n, N, X, node) + sToE(X, N, n, node))
+        answer.append(sToE(n, X) + sToE(X, n))
 print(max(answer))
