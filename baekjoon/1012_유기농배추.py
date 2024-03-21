@@ -72,36 +72,6 @@
 # 문제 핵심 해결 방법
 # 해결 방법을 위한 알고리즘
 # 코드 설명
-TESTCASE = range(int(input()))
-
-for _ in TESTCASE:
-    M, N, K = map(int, input().split())
-    ground = [[0 for _ in range(M)] for _ in range(N)]
-    bugs = set()
-    
-    for _ in range(K):
-        m, n = map(int, input().split())
-        ground[n][m] = 1
-        bugs.add((m, n))
-    
-    answer = 0
-    for m, n in bugs:
-        if ground[n][m] == 0:
-            continue
-        answer += 1
-        stack = [(m, n)]
-        ground[n][m] = 0
-
-        while stack:
-            m, n = stack.pop()
-            for gm, gn in ((1+m, n), (m, n+1), (m-1, n), (m, n-1)):
-                if 0 <= gm < M and 0 <= gn < N and ground[gn][gm] == 1:
-                    ground[gn][gm] = 0
-                    stack.append((gm, gn))
-    print(answer)
-
-# 31120kb	320ms
-    
 # TESTCASE = range(int(input()))
 
 # for _ in TESTCASE:
@@ -115,11 +85,9 @@ for _ in TESTCASE:
 #         bugs.add((m, n))
     
 #     answer = 0
-#     while bugs:
-#         m, n = bugs.pop()
-#     # for m, n in bugs:
-#     #     if ground[n][m] == 0:
-#     #         continue
+#     for m, n in bugs:
+#         if ground[n][m] == 0:
+#             continue
 #         answer += 1
 #         stack = [(m, n)]
 #         ground[n][m] = 0
@@ -129,8 +97,40 @@ for _ in TESTCASE:
 #             for gm, gn in ((1+m, n), (m, n+1), (m-1, n), (m, n-1)):
 #                 if 0 <= gm < M and 0 <= gn < N and ground[gn][gm] == 1:
 #                     ground[gn][gm] = 0
-#                     bugs.remove((gm, gn))
 #                     stack.append((gm, gn))
 #     print(answer)
+
+# 31120kb	320ms
+    
+TESTCASE = range(int(input()))
+
+for _ in TESTCASE:
+    M, N, K = map(int, input().split())
+    ground = [[0 for _ in range(M)] for _ in range(N)]
+    bugs = set()
+    
+    for _ in range(K):
+        m, n = map(int, input().split())
+        ground[n][m] = 1
+        bugs.add((m, n))
+
+# for m, n in bugs:
+#     if ground[n][m] == 0:
+#         continue    
+    answer = 0
+    while bugs:
+        m, n = bugs.pop()
+        answer += 1
+        stack = [(m, n)]
+        ground[n][m] = 0
+
+        while stack:
+            m, n = stack.pop()
+            for gm, gn in ((1+m, n), (m, n+1), (m-1, n), (m, n-1)):
+                if 0 <= gm < M and 0 <= gn < N and ground[gn][gm] == 1:
+                    ground[gn][gm] = 0
+                    bugs.remove((gm, gn))
+                    stack.append((gm, gn))
+    print(answer)
     
 # 31120	192
