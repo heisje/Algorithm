@@ -11,7 +11,9 @@ def solution(start, target):
 
     while hq:
         dist, pre = heapq.heappop(hq)
-        if dist > dists[pre]: continue
+
+        if pre == target:
+            return dists[target]
         
         for go, goDist in nodes[pre]:
             if goDist + dist < dists[go]:
